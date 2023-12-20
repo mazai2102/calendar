@@ -1,0 +1,208 @@
+@import url(<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif 'Roboto', sans-serif;
+}
+
+html {
+    font-size: 20px;
+
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+
+}
+
+main,
+.color-label {
+
+    --background: #353535;
+    --secondary-color: #272727;
+    --accent-color: #EFA638;
+    --text-color: #FFF;
+    --calendar-tiles-color: #646464;
+
+
+}
+
+.color-toggle:checked~main {
+    --background: #EBEBEB;
+    --secondary-color: #FFF;
+    --accent-color: #1395DE;
+    --text-color: #000;
+    --calendar-tiles-color: #D4D4D4;
+
+}
+
+.color-toggle:checked~.color-label {
+    --background: #EBEBEB;
+    --secondary-color: #FFF;
+    --accent-color: #1395DE;
+    --text-color: #000;
+    --calendar-tiles-color: #D4D4D4;
+
+}
+
+main {
+    background: var(--background);
+    height: 100vh;
+}
+
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.calendar {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__title {
+    margin-left: 24px;
+
+}
+
+.color-label {
+    position: fixed;
+    right: 35px;
+    bottom: 35px;
+    width: 323px;
+    padding: 22px 45px;
+    border-radius: 50px;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    text-align: right;
+
+}
+
+.color-toggle {
+    position: fixed;
+    bottom: 51px;
+    right: 300px;
+    height: 37px;
+    z-index: 2;
+}
+
+.calendar__body {
+
+    width: 1100px;
+    height: 750px;
+    background: var(--secondary-color);
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
+    grid-template-rows: repeat(5, 140px);
+}
+
+.cell {
+    background: var(--calendar-tiles-color);
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.cell__day-num {
+    color: var(--accent-color);
+}
+
+.cell__month {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+.cell__monday::after {
+    content: "Пн";
+}
+
+.cell__tuesday::after {
+    content: "Вт";
+}
+
+.cell__wednesday::after {
+    content: "Ср";
+}
+
+.cell__thursday::after {
+    content: "Чт";
+}
+
+.cell__friday::after {
+    content: "Пт";
+}
+
+.cell__saturday::after {
+    content: "Сб";
+}
+
+.cell__sunday::after {
+    content: "Вс";
+}
+.cell__monday::after,
+.cell__tuesday::after,
+.cell__wednesday::after,
+.cell__thursday::after,
+.cell__sunday::after,
+.cell__saturday::after,
+.cell__friday::after {
+   position: absolute;
+   top: 0;
+   left: 0;
+    background: var(--accent-color);
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    font-family: Roboto;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+
+}
+.cell_monday:hover:after,
+.cell_cell_tuesday:hover:after,
+.cell_cell_wednesday:hover:after,
+.cell_cell_thursday:hover:after,
+.cell_cell_sunday:hover:after,
+.cell_cell_saturday:hover:after,
+.cell_cell_friday:hover:after{
+    transform: rotateX(0);
+}
